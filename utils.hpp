@@ -6,6 +6,16 @@
 
 namespace utils {
 template <size_t N>
+array<double, N> add(array<double, N> a, array<double, N> b) {
+  array<double, N> result;
+  for (int i = 0; i < a.size(); i++) {
+    result[i] = a[i] + b[i];
+  }
+
+  return result;
+}
+
+template <size_t N>
 array<double, N> subtract(array<double, N> a, array<double, N> b) {
   array<double, N> result;
   for (int i = 0; i < a.size(); i++) {
