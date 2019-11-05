@@ -1,10 +1,19 @@
+CC = gcc
 CXX = g++
-CXXFLAGS = -Wall -g
+RM = rm -rf
+CXXFLAGS = -g
+
+BUILD = build
+
+SRC = main.cpp Planet.cpp
+OBJ = $(BUILD)/main.o $(BUILD)/Planet.o
+DEP = Planet.hpp utils.hpp
 
 main: main.o Planet.o
-	$(CXX) $(CXXFLAGS) -o bin/main main.o Planet.o
+	$(CXX) $(CXXFLAGS) -o bin/main $(BUILD)/main.o $(BUILD)/Planet.o
 
-main.o: main.cpp Planet.hpp utils.hpp
-	$(CXX) $(CXXFLAGS) -c main.cpp
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $(BUILD)/$@
 
-Planet.o: Planet.hpp utils.hpp
+clean:
+	$(RM) $(OBJ) bin/main
